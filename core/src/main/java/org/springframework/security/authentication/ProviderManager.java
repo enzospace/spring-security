@@ -96,7 +96,8 @@ public class ProviderManager implements AuthenticationManager, MessageSourceAwar
 	private List<AuthenticationProvider> providers = Collections.emptyList();
 
 	protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
-
+	
+	// 兜底操作 如果ProviderManager下所有的AuthenticationProvider不能进行认证时 调用parent的authentication方法
 	private AuthenticationManager parent;
 
 	private boolean eraseCredentialsAfterAuthentication = true;
