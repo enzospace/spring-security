@@ -63,6 +63,12 @@ import org.springframework.util.Assert;
  * @author Luke Taylor
  * @since 2.0
  */
+
+/**
+ * 继承自JdbcDaoImpl，实现了UserDetailsManager接口，提供了创建用户、更新用户、删除用户、修改密码以及判断用户是否存在的功能
+ * 数据会存储在数据库中
+ * 但是存在局限性,SQL语句是写死的，不够灵活,一般不会使用
+ */
 public class JdbcUserDetailsManager extends JdbcDaoImpl implements UserDetailsManager, GroupManager {
 
 	public static final String DEF_CREATE_USER_SQL = "insert into users (username, password, enabled) values (?,?,?)";

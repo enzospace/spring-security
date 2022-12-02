@@ -108,6 +108,10 @@ import org.springframework.util.Assert;
  * @author colin sampaleanu
  * @author Luke Taylor
  */
+
+/**
+ * 通过spring-jdbc实现了从数据库中获取用户信息的功能
+ */
 public class JdbcDaoImpl extends JdbcDaoSupport implements UserDetailsService, MessageSourceAware {
 
 	public static final String DEFAULT_USER_SCHEMA_DDL_LOCATION = "org/springframework/security/core/userdetails/jdbc/users.ddl";

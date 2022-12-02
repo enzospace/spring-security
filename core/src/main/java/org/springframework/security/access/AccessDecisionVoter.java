@@ -31,6 +31,11 @@ import org.springframework.security.core.Authentication;
  * @author Ben Alex
  * @deprecated Use {@link AuthorizationManager} instead
  */
+
+/**
+ * 投票器接口
+ * @param <S>
+ */
 @Deprecated
 public interface AccessDecisionVoter<S> {
 

@@ -28,6 +28,11 @@ import org.springframework.security.core.Authentication;
  * @author Ben Alex
  * @deprecated Use {@link AuthorizationManager} instead
  */
+
+/**
+ * 访问决策管理器接口
+ * 遍历所有的投票器，得到投票结果，然后根据投票结果进行授权
+ */
 @Deprecated
 public interface AccessDecisionManager {
 

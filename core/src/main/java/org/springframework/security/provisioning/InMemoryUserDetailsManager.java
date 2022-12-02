@@ -50,6 +50,10 @@ import org.springframework.util.Assert;
  * @author Luke Taylor
  * @since 3.1
  */
+
+/**
+ * 基于内存的用户管理器,数据存储在内存中
+ */
 public class InMemoryUserDetailsManager implements UserDetailsManager, UserDetailsPasswordService {
 
 	protected final Log logger = LogFactory.getLog(getClass());

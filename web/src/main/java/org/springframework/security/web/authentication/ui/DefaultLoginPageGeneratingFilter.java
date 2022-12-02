@@ -48,6 +48,10 @@ import org.springframework.web.util.HtmlUtils;
  * @author Luke Taylor
  * @since 2.0
  */
+
+/**
+ * 生成默认的登录页面
+ */
 public class DefaultLoginPageGeneratingFilter extends GenericFilterBean {
 
 	public static final String DEFAULT_LOGIN_PAGE_URL = "/login";
@@ -176,8 +180,11 @@ public class DefaultLoginPageGeneratingFilter extends GenericFilterBean {
 
 	private void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		// 是否登录出错
 		boolean loginError = isErrorPage(request);
+		// 是否登出成功
 		boolean logoutSuccess = isLogoutSuccess(request);
+		// 是否是登录 || 登录出错 || 登出成功 所以对于首次访问(/hello) 不会进行拦截, 会直接放行
 		if (isLoginUrlRequest(request) || loginError || logoutSuccess) {
 			String loginPageHtml = generateLoginPageHtml(request, loginError, logoutSuccess);
 			response.setContentType("text/html;charset=UTF-8");
@@ -188,6 +195,13 @@ public class DefaultLoginPageGeneratingFilter extends GenericFilterBean {
 		chain.doFilter(request, response);
 	}
 
+	/**
+	 * 生成登录页面,如果有异常,则会将异常信息一起返回
+	 * @param request
+	 * @param loginError
+	 * @param logoutSuccess
+	 * @return
+	 */
 	private String generateLoginPageHtml(HttpServletRequest request, boolean loginError, boolean logoutSuccess) {
 		String errorMsg = "Invalid credentials";
 		if (loginError) {
